@@ -8,6 +8,7 @@ import (
 	"github.com/valyala/fasthttp"
 	"go.uber.org/zap"
 	"net"
+	"net/http"
 )
 
 type Server struct {
@@ -38,6 +39,18 @@ func (s *Server) handleHttp(ctx *fasthttp.RequestCtx) {
 		return
 	}
 
+	u := &User{Country: country.Country.IsoCode, Browser: browserName}
+
+	campaigns := GetCampaigns()
+
+	winner := MakeAuction(campaigns, u)
+
+	if winner == nil {
+		ctx.Redirect("https//example.com", http.StatusSeeOther)
+		return
+	}
+
+	ctx.Redirect(winner.ClickUrl, http.StatusSeeOther)
 	ctx.WriteString(fmt.Sprintf("User-Agent: %s\n", ua))
 	ctx.WriteString(fmt.Sprintf("Browser: %s %s\n", browserName, browserVersion))
 	ctx.WriteString(fmt.Sprintf("IP: %s\n", ip))
