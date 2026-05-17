@@ -11,6 +11,7 @@ type (
 	}
 
 	Campaign struct {
+		Id        uint32
 		ClickUrl  string
 		Price     float64
 		Targeting Targeting
@@ -85,6 +86,7 @@ func filterByCountry(in []*Campaign, u *User) []*Campaign {
 func GetCampaigns() []*Campaign {
 	return []*Campaign{
 		{
+			Id:    1,
 			Price: 1,
 			Targeting: Targeting{
 				Country: "RU",
@@ -93,6 +95,7 @@ func GetCampaigns() []*Campaign {
 			ClickUrl: "https//yandex.ru",
 		},
 		{
+			Id:    2,
 			Price: 1,
 			Targeting: Targeting{
 				Country: "DE",
@@ -101,6 +104,7 @@ func GetCampaigns() []*Campaign {
 			ClickUrl: "https//google.com",
 		},
 		{
+			Id:    3,
 			Price: 1,
 			Targeting: Targeting{
 				Browser: "Firefox",

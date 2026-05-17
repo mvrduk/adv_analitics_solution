@@ -1,5 +1,7 @@
 package stats
 
+import "time"
+
 type (
 	Key struct {
 		Timestamp  int64
@@ -16,6 +18,12 @@ type (
 
 	Rows map[Key]Value
 )
+
+func NewKey(k Key) Key {
+	k.Timestamp = time.Now().Unix()
+	k.Timestamp -= k.Timestamp % 60
+	return k
+}
 
 func (a Value) Assign(b Value) Value {
 	res := a
