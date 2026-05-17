@@ -10,8 +10,10 @@ require (
 )
 
 require (
+	filippo.io/edwards25519 v1.2.0 // indirect
 	github.com/andybalholm/brotli v1.2.1 // indirect
 	github.com/ferluci/fast-realip v1.0.1 // indirect
+	github.com/go-sql-driver/mysql v1.10.0 // indirect
 	github.com/klauspost/compress v1.18.6 // indirect
 	github.com/oschwald/maxminddb-golang v1.13.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
