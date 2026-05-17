@@ -1,0 +1,1 @@
+module adv_analitics_solution
